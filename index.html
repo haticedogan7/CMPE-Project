@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Adaptive Big Five Test</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <h1>Adaptive Big Five Test</h1>
+    <p id="consent">
+      This is an anonymous class project. Your responses will be stored without your name.
+    </p>
+
+    <div id="status"></div>
+
+    <div id="card" class="card" style="display:none;">
+      <div id="qtext" class="qtext"></div>
+
+      <div class="scale">
+        <button data-v="1">1<br><span>Strongly Disagree</span></button>
+        <button data-v="2">2</button>
+        <button data-v="3">3<br><span>Neutral</span></button>
+        <button data-v="4">4</button>
+        <button data-v="5">5<br><span>Strongly Agree</span></button>
+      </div>
+    </div>
+
+    <div id="done" class="card" style="display:none;">
+      <h2>Done ✅</h2>
+      <pre id="result"></pre>
+      <p>Thanks! You can close this page.</p>
+    </div>
+  </main>
+
+  <!-- Firebase (modular SDK) -->
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
