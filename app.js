@@ -3,9 +3,13 @@ import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.g
 
 /** 1) Firebase config (replace with yours) **/
 const firebaseConfig = {
-  apiKey: "YOUR_KEY",
-  authDomain: "YOUR_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
+  apiKey: "AIzaSyDa6ofbWJPYsjbtVM0Gd2HQLspkaOxc0y8",
+  authDomain: "adaptive-test-551f0.firebaseapp.com",
+  projectId: "adaptive-test-551f0",
+  storageBucket: "adaptive-test-551f0.firebasestorage.app",
+  messagingSenderId: "522468315836",
+  appId: "1:522468315836:web:1de06402d7996f50b536b9",
+  measurementId: "G-FE1E9HT8T1"
 };
 const fbApp = initializeApp(firebaseConfig);
 const db = getFirestore(fbApp);
