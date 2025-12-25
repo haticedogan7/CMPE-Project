@@ -15,6 +15,8 @@ const fbApp = initializeApp(firebaseConfig);
 const db = getFirestore(fbApp);
 const doneTextEl = document.getElementById("doneText");
 const scoresEl = document.getElementById("scores");
+const introEl = document.getElementById("intro");
+const startBtn = document.getElementById("startBtn");
 
 /** 2) Load item bank **/
 const bank = await fetch("./items.json").then(r => r.json());
@@ -53,7 +55,10 @@ document.querySelectorAll("button[data-v]").forEach(btn => {
 let currentItem = null;
 
 /** 5) Start **/
-nextQuestion();
+startBtn.addEventListener("click", () => {
+  introEl.style.display = "none";
+  nextQuestion();
+});
 
 /** === Core adaptive logic === **/
 
@@ -146,6 +151,18 @@ async function finish(mu, sd) {
     answers: log
   };
 
+  function band(theta){
+    if (theta < -0.5) return "Below average";
+    if (theta >  0.5) return "Above average";
+    return "Around average";
+  }
+
+  function conf(s){
+    if (s < 0.45) return "High";
+    if (s < 0.55) return "Medium";
+    return "Low";
+  }
+
   doneTextEl.textContent = `You answered ${log.length} questions.`;
 
   scoresEl.innerHTML = traits.map(t => {
@@ -160,8 +177,8 @@ async function finish(mu, sd) {
     return `
       <div class="scoreRow">
         <div class="scoreName">${label}</div>
-        <div class="scoreVal">${mu[t].toFixed(2)}</div>
-        <div class="scoreSd">± ${sd[t].toFixed(2)}</div>
+        <div class="scoreVal">${band(mu[t])}</div>
+        <div class="scoreSd">Confidence: ${conf(sd[t])}</div>
       </div>
     `;
   }).join("");
