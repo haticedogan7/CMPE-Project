@@ -1,0 +1,12 @@
+{
+  "thetaGrid": { "min": -4, "max": 4, "n": 201 },
+  "tauStdStop": 0.55,
+  "maxItems": 50,
+  "agreeCutoff": 4,
+  "items": [
+    { "id": "E1", "trait": "E", "text": "…", "a": 1.10, "b": -0.20, "reverse": false },
+    { "id": "E2", "trait": "E", "text": "…", "a": 0.95, "b": 0.10, "reverse": true  },
+
+    { "id": "N1", "trait": "N", "text": "…", "a": 1.30, "b": 0.40, "reverse": false }
+  ]
+}
