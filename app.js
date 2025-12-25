@@ -13,6 +13,8 @@ const firebaseConfig = {
 };
 const fbApp = initializeApp(firebaseConfig);
 const db = getFirestore(fbApp);
+const doneTextEl = document.getElementById("doneText");
+const scoresEl = document.getElementById("scores");
 
 /** 2) Load item bank **/
 const bank = await fetch("./items.json").then(r => r.json());
@@ -144,8 +146,25 @@ async function finish(mu, sd) {
     answers: log
   };
 
-  //resultEl.textContent = JSON.stringify(result, null, 2);
-  resultEl.textContent = ""; // or nothing
+  doneTextEl.textContent = `You answered ${log.length} questions.`;
+
+  scoresEl.innerHTML = traits.map(t => {
+    const label = ({
+      E: "Extraversion",
+      N: "Neuroticism",
+      A: "Agreeableness",
+      C: "Conscientiousness",
+      O: "Openness"
+    })[t];
+
+    return `
+      <div class="scoreRow">
+        <div class="scoreName">${label}</div>
+        <div class="scoreVal">${mu[t].toFixed(2)}</div>
+        <div class="scoreSd">± ${sd[t].toFixed(2)}</div>
+      </div>
+    `;
+  }).join("");
 
   // save to Firestore
   try {
