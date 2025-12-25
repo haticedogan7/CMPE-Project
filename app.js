@@ -144,7 +144,8 @@ async function finish(mu, sd) {
     answers: log
   };
 
-  resultEl.textContent = JSON.stringify(result, null, 2);
+  //resultEl.textContent = JSON.stringify(result, null, 2);
+  resultEl.textContent = ""; // or nothing
 
   // save to Firestore
   try {
