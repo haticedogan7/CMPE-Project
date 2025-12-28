@@ -29,6 +29,10 @@ const scoresEl   = document.getElementById("scores");
 
 const backBtn    = document.getElementById("backBtn"); // add in index.html
 
+const pidInput = document.getElementById("pidInput");
+let participantId = null;
+
+
 // Hard lock initial visibility (prevents “question flashes”)
 if (cardEl) cardEl.style.display = "none";
 if (doneEl) doneEl.style.display = "none";
@@ -67,11 +71,21 @@ document.querySelectorAll("button[data-v]").forEach(btn => {
 });
 
 /** 6) Start **/
+/** 6) Start **/
 startBtn?.addEventListener("click", () => {
+  participantId = (pidInput.value || "").trim();
+
+  if (!participantId) {
+    alert("Please enter a username so we can match your results.");
+    return;
+  }
+
   started = true;
+
   if (introEl) introEl.style.display = "none";
   if (doneEl) doneEl.style.display = "none";
   if (cardEl) cardEl.style.display = "block";
+
   updateStatus();
   nextQuestion();
 });
@@ -199,6 +213,8 @@ async function finish(mu, sd) {
   if (doneEl) doneEl.style.display = "block";
 
   const result = {
+    mode: "adaptive",
+    participantId,   
     sessionId,
     createdAt: Date.now(),
     tau,
