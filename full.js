@@ -28,6 +28,9 @@ const doneEl     = document.getElementById("done");
 const doneTextEl = document.getElementById("doneText");
 const scoresEl   = document.getElementById("scores");
 
+const pidInput = document.getElementById("pidInput");
+let participantId = null;
+
 // initial state
 cardEl.style.display = "none";
 doneEl.style.display = "none";
@@ -63,16 +66,25 @@ document.querySelectorAll("button[data-v]").forEach(btn => {
   });
 });
 
-startBtn.addEventListener("click", () => {
+
+startBtn?.addEventListener("click", () => {
+  participantId = (pidInput.value || "").trim();
+
+  if (!participantId) {
+    alert("Please enter a username so we can match your results.");
+    return;
+  }
+
   started = true;
-  introEl.style.display = "none";
-  doneEl.style.display = "none";
-  cardEl.style.display = "block";
-  idx = 0;
-  answers.length = 0;
-  renderQuestion();
-  updateBack();
+
+  if (introEl) introEl.style.display = "none";
+  if (doneEl) doneEl.style.display = "none";
+  if (cardEl) cardEl.style.display = "block";
+
+  updateStatus();
+  nextQuestion();
 });
+
 
 backBtn.addEventListener("click", () => {
   if (!started) return;
@@ -144,7 +156,7 @@ async function finish() {
     `;
   }).join("");
 
-  const payload = {
+  const payload = {   
     mode: "full",
     participantId,           // lets you pair with adaptive later
     sessionId,
