@@ -51,7 +51,6 @@ for (const t of traits) {
   ordered.push(...group);
 }
 
-const participantId = getOrCreateParticipantId();
 const sessionId = crypto.randomUUID();
 
 let started = false;
@@ -82,7 +81,10 @@ startBtn?.addEventListener("click", () => {
   if (cardEl) cardEl.style.display = "block";
 
   updateStatus();
-  nextQuestion();
+  idx = 0;
+  answers.length = 0;
+  renderQuestion();
+  updateBack();
 });
 
 
