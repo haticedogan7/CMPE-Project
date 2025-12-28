@@ -80,7 +80,6 @@ startBtn?.addEventListener("click", () => {
   if (doneEl) doneEl.style.display = "none";
   if (cardEl) cardEl.style.display = "block";
 
-  updateStatus();
   idx = 0;
   answers.length = 0;
   renderQuestion();
