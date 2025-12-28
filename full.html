@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Full Big Five (50 items)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <h1>Full Big Five Test (50 items)</h1>
+
+    <div id="status"></div>
+
+    <div id="intro" class="card">
+      <h2 style="margin-top:0;">Welcome</h2>
+      <p class="small badge">CMPE 58I: Human Inspired Machine Intelligence</p>
+
+      <p>
+        This is an anonymous class project. Your responses will be stored <b>without your name</b>.
+      </p>
+
+      <p>
+        This version asks <b>all 50 questions</b> (non-adaptive). We use it as a baseline to compare
+        against the adaptive version.
+      </p>
+
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <button id="startBtn" class="primaryBtn" type="button">Start full test</button>
+        <a class="primaryBtn" style="text-decoration:none; background:#ffffff; color:var(--accent2); border:1px solid var(--border);"
+           href="./index.html">Go to adaptive test</a>
+      </div>
+    </div>
+
+    <div id="card" class="card" style="display:none;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <button id="backBtn" class="primaryBtn" type="button"
+          style="background:#ffffff; color:var(--accent2); border:1px solid var(--border);">
+          ← Back
+        </button>
+      </div>
+
+      <div id="qtext" class="qtext"></div>
+
+      <div class="scale">
+        <button data-v="1" type="button">1<br><span>Strongly Disagree</span></button>
+        <button data-v="2" type="button">2<br><span>Somewhat Disagree</span></button>
+        <button data-v="3" type="button">3<br><span>Neutral</span></button>
+        <button data-v="4" type="button">4<br><span>Somewhat Agree</span></button>
+        <button data-v="5" type="button">5<br><span>Strongly Agree</span></button>
+      </div>
+    </div>
+
+    <div id="done" class="card" style="display:none;">
+      <h2>Done ✅</h2>
+      <p id="doneText"></p>
+      <div id="scores" class="scores"></div>
+      <p class="small">Thanks! Your responses were saved anonymously.</p>
+
+      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:10px;">
+        <a class="primaryBtn" style="text-decoration:none;" href="./index.html">Take adaptive test</a>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="./full.js?v=1"></script>
+</body>
+</html>
